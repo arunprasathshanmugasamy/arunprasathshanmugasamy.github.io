@@ -3,49 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Design Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 17px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            margin-top: -60px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(24px, 3vw, 32px);
+            color: #6e6e73;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .cta {
+            display: inline-block;
+            background: #0071e3;
+            color: white;
+            padding: 18px 48px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 21px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta:hover {
+            background: #0077ed;
+            transform: scale(1.02);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #0071e3;
+            border: 2px solid #0071e3;
+            margin-left: 20px;
+        }
+
+        .cta-secondary:hover {
+            background: #0071e3;
+            color: white;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: #f5f5f7;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-card:nth-child(4) .project-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-info h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .project-info p {
+            color: #6e6e73;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            background: #f5f5f7;
+            border-radius: 30px;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: clamp(20px, 2.5vw, 28px);
+            color: #1d1d1f;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 5%;
+            background: #f5f5f7;
+            margin-top: 100px;
+        }
+
+        footer p {
+            color: #6e6e73;
+            font-size: 17px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav a {
+                margin-left: 20px;
+                font-size: 15px;
+            }
+
+            .cta-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                padding: 60px 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<header>
-    <h1>Your Name</h1>
-    <p class="subtitle">Motion Designer • 3D Artist</p>
-</header>
-
-<section id="projects">
-    <h2>Selected Work</h2>
-
-    <div class="grid">
-        <div class="item">
-            <img src="assets/project1.jpg" alt="">
-            <p>Project Title One</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Portfolio</div>
+        <div>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
+    </nav>
 
-        <div class="item">
-            <img src="assets/project2.jpg" alt="">
-            <p>Project Title Two</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Design that inspires.</h1>
+        <p>Creating beautiful, functional experiences</p>
+        <div>
+            <a href="#work" class="cta">View My Work</a>
+            <a href="#contact" class="cta cta-secondary">Get in Touch</a>
         </div>
+    </section>
 
-        <div class="item">
-            <img src="assets/project3.jpg" alt="">
-            <p>Project Title Three</p>
+    <!-- Portfolio Section -->
+    <section id="work">
+        <h2 class="section-title">Featured Work</h2>
+        <div class="portfolio-grid">
+            <div class="project-card">
+                <div class="project-image">01</div>
+                <div class="project-info">
+                    <h3>Brand Identity</h3>
+                    <p>Complete brand redesign with modern aesthetics and cohesive visual language.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">02</div>
+                <div class="project-info">
+                    <h3>Mobile App Design</h3>
+                    <p>Intuitive interface design focusing on user experience and accessibility.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">03</div>
+                <div class="project-info">
+                    <h3>Web Experience</h3>
+                    <p>Responsive website design with seamless interactions and animations.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">04</div>
+                <div class="project-info">
+                    <h3>Product Design</h3>
+                    <p>End-to-end product design from concept to final implementation.</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="about">
-    <h2>About</h2>
-    <p>
-        Short clean introduction about who you are, what you do, 
-        and what type of work you focus on. Keep it 3–4 lines.
-    </p>
-</section>
+    <!-- About Section -->
+    <section id="about">
+        <div class="about">
+            <h2 class="section-title">About Me</h2>
+            <p>I'm a designer passionate about creating meaningful experiences that connect with people. With a focus on simplicity and elegance, I transform ideas into beautiful, functional designs.</p>
+        </div>
+    </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></p>
-</section>
+    <!-- Contact Section -->
+    <section id="contact" style="text-align: center;">
+        <h2 class="section-title">Let's Work Together</h2>
+        <p style="font-size: 24px; color: #6e6e73; margin-bottom: 40px;">Have a project in mind? Let's create something amazing.</p>
+        <a href="mailto:your.email@example.com" class="cta">Contact Me</a>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Your Name. All rights reserved.</p>
+    </footer>
 </body>
 </html>
